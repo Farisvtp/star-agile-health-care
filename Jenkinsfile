@@ -3,14 +3,14 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                git url:'https://github.com/Farisvtp/cicdfaris/', branch: "master"
+                git url:'https://github.com/Farisvtp/star-agile-health-care/', branch: "master"
                sh 'mvn clean install'
             }
         }
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t faris7/endtoendproject25may:v3 .'
+                    sh 'docker build -t faris7/endtoendproject:v3 .'
                 }
             }
         }
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh 'docker push faris7/endtoendproject25may:v3'
+                    sh 'docker push faris7/endtoendproject:v3'
                 }
             }
         }
