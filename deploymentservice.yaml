@@ -18,17 +18,17 @@ spec:
       - name: healthcare-container
         image: faris7/healthcareproject:v3
         ports:
-        - containerPort: 8082          # <--- updated port
+        - containerPort: 8082   # Change if your app runs on another port
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: healthcare-service
+  name: healthcare-k8ssvc
 spec:
+  type: NodePort
   selector:
     app: healthcare
   ports:
-  - protocol: TCP
-    port: 80                          # Exposed service port
-    targetPort: 8082                  # <--- updated targetPort to match container
-  type: LoadBalancer                  # Exposes it externally
+    - port: 8080          # Exposed service port
+      targetPort: 8082    # Match containerPort (your app port)
+      nodePort: 32354     # Or leave it out to auto-assign
