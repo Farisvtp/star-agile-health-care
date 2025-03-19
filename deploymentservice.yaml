@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: healthcare-container
-        image: faris7/healthcareproject:v3
+        image: faris7/health:v3
         ports:
         - containerPort: 8082   # Change if your app runs on another port
 ---
