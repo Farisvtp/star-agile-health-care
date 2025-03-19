@@ -31,4 +31,4 @@ spec:
   ports:
     - port: 8080          # Exposed service port
       targetPort: 8082    # Match containerPort (your app port)
-      nodePort: 32354     # Or leave it out to auto-assign
+      nodePort: 31354     # Or leave it out to auto-assign
